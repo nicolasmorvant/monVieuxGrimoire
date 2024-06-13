@@ -182,7 +182,7 @@ const fs = require("fs");
         Book.findOne( {_id : req.params.id} )
         .then(  
             
-            book => {
+            (book) => {
 
                 //LE LIVRE EST INTROUVABLE
                 if(!book)
@@ -205,7 +205,7 @@ const fs = require("fs");
                         {
                             return res.status(400).json( new Error("La note doit être comprise entre 0 et 5") )
                         }  
-                        else if(typeof updateRating.grade !== number)
+                        else if(typeof updateRating.grade !== 'number')
                         {
                             return res.status(400).json( new Error("La note doit être un chiffre") )
                         }
