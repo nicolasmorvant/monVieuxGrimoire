@@ -122,7 +122,7 @@ const fs = require("fs");
 
             if(book.userId !== req.auth.userId) 
             {
-                return res.status(401).json({ message: "Non autorisé" });
+                return res.status(403).json({ message: "Non autorisé" });
             }
 
             //SI NOUVELLE IMAGE
@@ -186,7 +186,7 @@ const fs = require("fs");
             
             if(book.userId !== req.auth.userId)
             {
-                return res.status(401).json({ message: 'Non-autorisé'});
+                return res.status(403).json({ message: 'Non-autorisé'});
             }
 
             //RÉCUPÉRATION DE L'IMAGE POUR LA SUPPRESSION
