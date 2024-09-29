@@ -8,7 +8,7 @@ const app = express();
 const path = require('path');
 
 //IMPORTATION DE BODY PARSER
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
 //IMPORTATION DES ROUTES POUR LES LIVRES ET LES UTILISATEURS
 const bookRoutes = require("./routes/bookRouter");
@@ -29,6 +29,9 @@ mongoose.connect(process.env.MONGODB_URI,
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+//REMPLACEMENT DE BODY PARSER POUR ACCÉDER AU CORPS DE LA REQUÊTE
+app.use(express.json());
+
 //MIDDLEWARE POUR GÉRER LES CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -39,7 +42,7 @@ app.use((req, res, next) => {
 });
 
 //MIDDLEWARE QUI EXTRAIT LE JSON DU CORPS D'UNE REQUÊTE ET LE REND DISPONIBLE DANS req.body
-app.use(bodyParser.json())
+//app.use(bodyParser.json())
 
 //UTILISATION DES ROUTES POUR LES IMAGES, LES LIVRES ET LES UTILISATEURS
 app.use('/api/books', bookRoutes);

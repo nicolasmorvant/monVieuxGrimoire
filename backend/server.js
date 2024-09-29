@@ -6,13 +6,19 @@ const app = require('./app');
 
 //FONCTION DE NORMALISATION DU PORT D'ÉCOUTE
 const normalizePort = val => {
+    
     const port = parseInt(val, 10);
-    if (isNaN(port)) {
+    
+    if(isNaN(port)) 
+    {
         return val;
     }
-    if (port >= 0) {
+    
+    if(port >= 0) 
+    {
         return port;
     }
+    
     return false;
 };
 
@@ -22,12 +28,16 @@ app.set('port', port);
 
 //FONCTION DE GESTION D'ERREURS POUR LES ERREURS LIÉES AU SERVEUR
 const errorHandler = error => {
-    if (error.syscall !== 'listen') {
+    if(error.syscall !== 'listen') 
+    {
         throw error;
     }
     const address = server.address();
+    
     const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
-    switch (error.code) {
+    
+    switch(error.code) 
+    {
         case 'EACCES':
             console.error(bind + ' requires elevated privileges.');
             process.exit(1);
@@ -47,9 +57,11 @@ const server = http.createServer(app);
 //GESTION DES ERREURS DU SERVEUR
 server.on('error', errorHandler);
 server.on('listening', () => {
+
     const address = server.address();
     const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
     console.log('Listening on ' + bind);
+
 });
 
 //DÉMARRAGE DU SERVEUR EN ÉCOUTANT LE PORT SPÉCIFIÉ
