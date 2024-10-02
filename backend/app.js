@@ -7,6 +7,9 @@ const app = express();
 //ACCÈS AU PATH DU SERVEUR
 const path = require('path');
 
+//CHARGEMENT VARIABLES D'ENVIRONNEMENT
+require('dotenv').config();
+
 //IMPORTATION DE BODY PARSER
 //const bodyParser = require('body-parser');
 
@@ -16,9 +19,6 @@ const userRoutes = require("./routes/userRouter");
 
 //IMPORTATION DU MODULE MONGOOSE POUR LA CONNEXION À LA BASE DE DONNÉES MONGODB
 const mongoose = require('mongoose');
-
-//CHARGEMENT VARIABLES D'ENVIRONNEMENT
-require('dotenv').config();
 
 //CONNEXION À LA BASE DE DONNÉES
 mongoose.connect(process.env.MONGODB_URI, 

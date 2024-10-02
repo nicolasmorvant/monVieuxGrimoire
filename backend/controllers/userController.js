@@ -26,13 +26,12 @@ const jwt = require("jsonwebtoken");
                 });
 
                 user.save()
-                .then( () => res.status(200).json( { message: "Utilisateur enregistré"} ))
+                .then( () => res.status(201).json( { message: "Utilisateur enregistré"} ))
                 .catch( error => res.status(500).json( {error} ))
             }
         )
         .catch( error => res.status(500).json( {error} ))
     }
-
 
     //CONNEXION D'UN UTILISATEUR
     exports.logUser = (req, res, next) => {
@@ -55,7 +54,7 @@ const jwt = require("jsonwebtoken");
                             
                             if(!valide)
                             {
-                                res.status(401).json( {message: "Paire identifiant/mot de passe incorrection"} );
+                                res.status(401).json( {message: "Paire identifiant/mot de passe incorrecte"} );
                             }
                             //LE MOT DE PASSE EST CORRECT
                             else
@@ -76,7 +75,7 @@ const jwt = require("jsonwebtoken");
                     .catch( error => res.status(500).json( {error} ))
                 }
 
-                () => res.status(200).json( { userId: res.body.userId, token: tkn } )
+                //() => res.status(200).json( { userId: res.body.userId, token: tkn } )
             }
         )
         .catch( error => res.status(500).json( {error} ))
