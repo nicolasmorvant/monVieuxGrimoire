@@ -22,7 +22,7 @@ const normalizePort = val => {
     return false;
 };
 
-//DÉFINITION DU PORT D'ÉCOUTE (process.env.PORT ou le port 3000)
+//DÉFINITION DU PORT D'ÉCOUTE (process.env.PORT ou le port 4000)
 const port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
