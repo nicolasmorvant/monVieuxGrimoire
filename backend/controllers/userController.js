@@ -74,8 +74,6 @@ const jwt = require("jsonwebtoken");
                     )
                     .catch( error => res.status(500).json( {error} ))
                 }
-
-                //() => res.status(200).json( { userId: res.body.userId, token: tkn } )
             }
         )
         .catch( error => res.status(500).json( {error} ))
