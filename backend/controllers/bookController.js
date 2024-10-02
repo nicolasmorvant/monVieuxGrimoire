@@ -220,7 +220,7 @@ const fs = require("fs");
 
     //NOTATION D'UN LIVRE
     exports.rateBook = async (req, res, next) => {
-    
+
         const updateRating = {userId: req.auth.userId, grade: req.body.rating};
             
         try
